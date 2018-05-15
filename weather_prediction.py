@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from sklearn import preprocessing as pre, svm
 from sklearn.cross_validation import train_test_split
-df = pd.read_csv("data_Set_pro/ulsan_final.csv")
+df = pd.read_csv("input/ulsan_final.csv")
 X=np.array(df.drop(['TEMPERATURE','dateTime','TIME'], 1))
 y= df['TEMPERATURE']
 
