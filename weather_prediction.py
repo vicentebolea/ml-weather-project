@@ -43,17 +43,20 @@ print("Testing the model...")
 predict_y_array = SVR_model.predict(x_test_scaled)
 score = SVR_model.score(x_test_scaled,y_test)
 
-print(score)
-print(predict_y_array[0:10], np.array(y_test[0:10]))
+print("Score of", score)
 
 print("Plotting the model")
 
-plt.plot(np.array(y_test[0:100]), color='g')
-plt.plot(predict_y_array[0:100], color='r')
+y_test_np = np.array(y_test[0:100])
 
-plt.xlabel('Date')
+plt.plot(y_test_np, color='g', label="Actual temperature")
+plt.plot(predict_y_array[0:100], color='r', label="Predicted temperature")
+
+plt.xlabel('Day')
 plt.ylabel('Temperature')
 plt.title('Temperature forecast')
+plt.legend()
 plt.show()
 
-
+print("Saving the output")
+np.savetxt("predicted_output.csv", np.transpose(np.vstack((y_test_np, predict_y_array[0:100]))), fmt="%f", delimiter=",")
