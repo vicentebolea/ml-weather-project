@@ -38,7 +38,7 @@ except:
     SVR_model = svm.SVR(kernel='rbf',C=100,gamma=.1).fit(x_train_scaled, y_train)
     joblib.dump(SVR_model, 'model.pkl')
 
-print("prediction of model...")
+print("Testing the model...")
 
 predict_y_array = SVR_model.predict(x_test_scaled)
 score = SVR_model.score(x_test_scaled,y_test)
@@ -51,9 +51,9 @@ print("Plotting the model")
 plt.plot(np.array(y_test[0:100]), color='g')
 plt.plot(predict_y_array[0:100], color='r')
 
-plt.xlabel('Datetime')
-plt.ylabel('Temprature')
-plt.title('Temprature forecasting')
+plt.xlabel('Date')
+plt.ylabel('Temperature')
+plt.title('Temperature forecast')
 plt.show()
 
 
